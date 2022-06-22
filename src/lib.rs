@@ -1,7 +1,7 @@
 use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
 use log::{info, warn, trace};
-use serde::{Default, Deserialize, Serialize};
+use serde::{Deserialize, Serialize};
 
 proxy_wasm::main! {{
     proxy_wasm::set_log_level(LogLevel::Trace);
@@ -49,7 +49,7 @@ impl HttpContext for HttpConfigHeader {
     }
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 struct PolicyConfig {
      #[serde(alias = "secret-value")]
     secret_value: String
@@ -65,14 +65,14 @@ impl Context for HttpConfigHeaderRoot {}
 impl RootContext for HttpConfigHeaderRoot {
     fn on_configure(&mut self, _: usize) -> bool {
         if let Some(config_bytes) = self.get_plugin_configuration() {
-            let config = serde_json::from_slice(config_bytes.as_slice()).unwrap()
+            let config = serde_json::from_slice(config_bytes.as_slice()).unwrap();
             self.secret = config.secret_value;
             //let strConfig = String::from_utf8(config_bytes).unwrap();
             //let c: Config = serde_json::from_str(&strConfig);
             //self.header_content = c.secret_value;
 
             //self.header_content = String::from_utf8(config_bytes).unwrap();
-            info!("header_content {}",self.config.secret_value);
+            info!("header_content {}",self.secret);
         }
         true
     }
