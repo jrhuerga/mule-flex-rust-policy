@@ -20,21 +20,25 @@ impl Context for HttpConfigHeader {}
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_headers");
+        info!("self header content {}",self.header_content);
         Action::Continue
     }
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_body");
+        info!("self header content {}",self.header_content);
         Action::Continue
     }
 
     fn on_http_response_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_response_headers");
+        info!("self header content {}",self.header_content);
         Action::Continue
     }
 
     fn on_http_response_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
         info!("on_http_response_body");
+        info!("self header content {}",self.header_content);
         Action::Continue
     }
 }
