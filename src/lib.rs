@@ -1,6 +1,7 @@
 use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
 use log::{info, warn, trace};
+use serde::{Deserialize, Serialize};
 
 proxy_wasm::main! {{
     proxy_wasm::set_log_level(LogLevel::Trace);
@@ -43,8 +44,10 @@ impl HttpContext for HttpConfigHeader {
     }
 }
 
+#[derive(Serialize, Deserialize)]
 struct Config {
-    secret-value: String
+     #[serde(alias = "secret-value")]
+    secret_value: String
 }
 
 struct HttpConfigHeaderRoot {
