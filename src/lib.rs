@@ -1,13 +1,13 @@
 use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
 use log::{info, warn, trace};
-use serde::{Deserialize, Serialize};
+use serde::{Default, Deserialize, Serialize};
 
 proxy_wasm::main! {{
     proxy_wasm::set_log_level(LogLevel::Trace);
     proxy_wasm::set_root_context(|_| -> Box<dyn RootContext> {
         Box::new(HttpConfigHeaderRoot {
-            header_content: String::new(),
+            config: PolicyConfig::default()
         })
     });
 }}
@@ -49,7 +49,7 @@ impl HttpContext for HttpConfigHeader {
     }
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Default, Serialize, Deserialize)]
 struct PolicyConfig {
      #[serde(alias = "secret-value")]
     secret_value: String
@@ -78,7 +78,7 @@ impl RootContext for HttpConfigHeaderRoot {
 
     fn create_http_context(&self, _: u32) -> Option<Box<dyn HttpContext>> {
         Some(Box::new(HttpConfigHeader {
-            header_content: self.header_content.clone(),
+            header_content: self.config.clone(),
         }))
     }
 
