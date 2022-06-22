@@ -1,5 +1,6 @@
 use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
+use log::trace;
 
 proxy_wasm::main! {{
     proxy_wasm::set_log_level(LogLevel::Trace);
@@ -18,18 +19,22 @@ impl Context for HttpConfigHeader {}
 
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
+        trace!("Log 01 ");
         Action::Continue
     }
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
+        trace!("Log 02 ");
         Action::Continue
     }
 
     fn on_http_response_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
+        trace!("Log 03 ");
         Action::Continue
     }
 
     fn on_http_response_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
+        trace!("Log 04 ");
         Action::Continue
     }
 }
