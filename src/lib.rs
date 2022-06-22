@@ -16,7 +16,7 @@ struct HttpConfigHeader {
     secret: String
 }
 
-]impl Context for HttpConfigHeader {}
+impl Context for HttpConfigHeader {}
 
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
