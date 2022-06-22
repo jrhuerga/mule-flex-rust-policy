@@ -52,7 +52,7 @@ impl HttpContext for HttpConfigHeader {
 #[derive(Serialize, Deserialize)]
 struct PolicyConfig {
      #[serde(alias = "secret-value")]
-    secret_value: S]tring
+    secret_value: String
 }
 
 struct HttpConfigHeaderRoot {
@@ -65,12 +65,13 @@ impl Context for HttpConfigHeaderRoot {}
 impl RootContext for HttpConfigHeaderRoot {
     fn on_configure(&mut self, _: usize) -> bool {
         if let Some(config_bytes) = self.get_plugin_configuration() {
-            let strConfig = String::from_utf8(config_bytes).unwrap();
-            let c: Config = serde_json::from_str(&strConfig);
-            self.header_content = c.secret_value;
+            self.config = serde_json::from_slice(config_bytes.as_slice()).unwrap();
+            //let strConfig = String::from_utf8(config_bytes).unwrap();
+            //let c: Config = serde_json::from_str(&strConfig);
+            //self.header_content = c.secret_value;
 
             //self.header_content = String::from_utf8(config_bytes).unwrap();
-            info!("header_content {}",self.header_content);
+            info!("header_content {}",self.config.secret_value);
         }
         true
     }
