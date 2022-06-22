@@ -23,8 +23,17 @@ impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_headers");
         //info!("self header content {}",self.header_content);
-        info!("self header content {}",self.secret);
-        Action::Continue
+        info!("self header content {}",self.secret);       
+        
+        if let Some(value) = self.get_http_request_header("x-custom-auth") {
+            if self.secret == value {
+                info!("on_http_request_headers allowing");
+                return Action::Continue;
+            }
+        }
+        info!("on_http_request_headers blocking");
+        self.send_http_response(401, Vec::new(), None);
+        Action::Pause   
     }
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
