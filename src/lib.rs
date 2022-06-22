@@ -61,7 +61,7 @@ impl RootContext for HttpConfigHeaderRoot {
         if let Some(config_bytes) = self.get_plugin_configuration() {
             let strConfig = String::from_utf8(config_bytes).unwrap();
             let c: Config = serde_json::from_str(strConfig)?;
-            self.header_content = p.secret-value;
+            self.header_content = c.secret_value;
 
             //self.header_content = String::from_utf8(config_bytes).unwrap();
             info!("header_content {}",self.header_content);
