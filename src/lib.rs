@@ -19,30 +19,22 @@ impl Context for HttpConfigHeader {}
 
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
-        trace!("Log 01a ");
-        info!("Log 01b ");
-        warn!("Log 01c ");
+        info!("on_http_request_headers");
         Action::Continue
     }
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
-        trace!("Log 02a ");
-        info!("Log 02b ");
-        warn!("Log 02c ");
+        info!("on_http_request_body");
         Action::Continue
     }
 
     fn on_http_response_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
-        trace!("Log 03a ");
-        info!("Log 03b ");
-        warn!("Log 03c ");
+        info!("on_http_response_headers");
         Action::Continue
     }
 
     fn on_http_response_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
-        trace!("Log 04a ");
-        info!("Log 04b ");
-        warn!("Log 04c ");
+        info!("on_http_response_body");
         Action::Continue
     }
 }
@@ -57,6 +49,7 @@ impl RootContext for HttpConfigHeaderRoot {
     fn on_configure(&mut self, _: usize) -> bool {
         if let Some(config_bytes) = self.get_plugin_configuration() {
             self.header_content = String::from_utf8(config_bytes).unwrap()
+            info!("header_content {}",self.header_content);
         }
         true
     }
