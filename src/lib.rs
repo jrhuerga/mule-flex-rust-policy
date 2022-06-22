@@ -13,7 +13,8 @@ proxy_wasm::main! {{
 }}
 
 struct HttpConfigHeader {
-    header_content: String,
+    //header_content: String,
+    config: PolicyConfig
 }
 
 impl Context for HttpConfigHeader {}
@@ -21,37 +22,42 @@ impl Context for HttpConfigHeader {}
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_headers");
-        info!("self header content {}",self.header_content);
+        //info!("self header content {}",self.header_content);
+        info!("self header content {}",self.config.secret_value);
         Action::Continue
     }
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_body");
-        info!("self header content {}",self.header_content);
+        //info!("self header content {}",self.header_content);
+        info!("self header content {}",self.config.secret_value);
         Action::Continue
     }
 
     fn on_http_response_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_response_headers");
-        info!("self header content {}",self.header_content);
+        //info!("self header content {}",self.header_content);
+        info!("self header content {}",self.config.secret_value);
         Action::Continue
     }
 
     fn on_http_response_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
         info!("on_http_response_body");
-        info!("self header content {}",self.header_content);
+        //info!("self header content {}",self.header_content);
+        info!("self header content {}",self.config.secret_value);
         Action::Continue
     }
 }
 
 #[derive(Serialize, Deserialize)]
-struct Config {
+struct PolicyConfig {
      #[serde(alias = "secret-value")]
-    secret_value: String
+    secret_value: S]tring
 }
 
 struct HttpConfigHeaderRoot {
-    header_content: String,
+//    header_content: String,
+    config: PolicyConfig
 }
 
 impl Context for HttpConfigHeaderRoot {}
