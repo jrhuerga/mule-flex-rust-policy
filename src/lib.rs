@@ -65,7 +65,7 @@ impl Context for HttpConfigHeaderRoot {}
 impl RootContext for HttpConfigHeaderRoot {
     fn on_configure(&mut self, _: usize) -> bool {
         if let Some(config_bytes) = self.get_plugin_configuration() {
-            let config = serde_json::from_slice(config_bytes.as_slice()).unwrap();
+            let config:PolicyConfig = serde_json::from_slice(config_bytes.as_slice()).unwrap();
             self.secret = config.secret_value;
             //let strConfig = String::from_utf8(config_bytes).unwrap();
             //let c: Config = serde_json::from_str(&strConfig);
