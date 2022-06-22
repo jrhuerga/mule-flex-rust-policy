@@ -1,6 +1,6 @@
 use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
-use log::{info, warn, trace};
+use log::info;
 use serde::{Deserialize, Serialize};
 
 proxy_wasm::main! {{
@@ -13,18 +13,14 @@ proxy_wasm::main! {{
 }}
 
 struct HttpConfigHeader {
-    //header_content: String,
     secret: String
 }
 
-impl Context for HttpConfigHeader {}
+]impl Context for HttpConfigHeader {}
 
 impl HttpContext for HttpConfigHeader {
     fn on_http_request_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
-        info!("on_http_request_headers");
-        //info!("self header content {}",self.header_content);
-        info!("self header content {}",self.secret);       
-        
+        info!("on_http_request_headers");        
         if let Some(value) = self.get_http_request_header("x-custom-auth") {
             if self.secret == value {
                 info!("on_http_request_headers allowing");
@@ -38,22 +34,16 @@ impl HttpContext for HttpConfigHeader {
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
         info!("on_http_request_body");
-        //info!("self header content {}",self.header_content);
-        info!("self header content {}",self.secret);
         Action::Continue
     }
 
     fn on_http_response_headers(&mut self, _num_headers: usize, _end_of_stream: bool) -> Action {
         info!("on_http_response_headers");
-        //info!("self header content {}",self.header_content);
-        info!("self header content {}",self.secret);
         Action::Continue
     }
 
     fn on_http_response_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
         info!("on_http_response_body");
-        //info!("self header content {}",self.header_content);
-        info!("self header content {}",self.secret);
         Action::Continue
     }
 }
@@ -65,7 +55,6 @@ struct PolicyConfig {
 }
 
 struct HttpConfigHeaderRoot {
-//    header_content: String,
     secret: String
 }
 
@@ -76,12 +65,7 @@ impl RootContext for HttpConfigHeaderRoot {
         if let Some(config_bytes) = self.get_plugin_configuration() {
             let config:PolicyConfig = serde_json::from_slice(config_bytes.as_slice()).unwrap();
             self.secret = config.secret_value;
-            //let strConfig = String::from_utf8(config_bytes).unwrap();
-            //let c: Config = serde_json::from_str(&strConfig);
-            //self.header_content = c.secret_value;
-
-            //self.header_content = String::from_utf8(config_bytes).unwrap();
-            info!("header_content {}",self.secret);
+            info!("secret header is {}",self.secret);
         }
         true
     }
