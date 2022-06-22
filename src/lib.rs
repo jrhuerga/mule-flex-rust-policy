@@ -24,7 +24,7 @@ impl HttpContext for HttpConfigHeader {
         info!("on_http_request_headers");
         //info!("self header content {}",self.header_content);
         info!("self header content {}",self.secret);
-        Action::Continue]
+        Action::Continue
     }
 
     fn on_http_request_body(&mut self, _body_size: usize, _end_of_stream: bool) -> Action {
