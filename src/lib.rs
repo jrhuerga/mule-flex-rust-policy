@@ -78,7 +78,7 @@ impl RootContext for HttpConfigHeaderRoot {
 
     fn create_http_context(&self, _: u32) -> Option<Box<dyn HttpContext>> {
         Some(Box::new(HttpConfigHeader {
-            header_content: self.config.clone(),
+            config: self.config.clone(),
         }))
     }
 
