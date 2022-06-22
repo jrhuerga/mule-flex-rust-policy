@@ -48,7 +48,7 @@ impl Context for HttpConfigHeaderRoot {}
 impl RootContext for HttpConfigHeaderRoot {
     fn on_configure(&mut self, _: usize) -> bool {
         if let Some(config_bytes) = self.get_plugin_configuration() {
-            self.header_content = String::from_utf8(config_bytes).unwrap()
+            self.header_content = String::from_utf8(config_bytes).unwrap();
             info!("header_content {}",self.header_content);
         }
         true
