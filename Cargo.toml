@@ -1,13 +1,13 @@
 [package]
-name = "flex_custom_policy_example_3"
+name = "flex_custom_policy_auth_header"
 version = "0.1.0"
-edition = "2021"
+edition = "2022"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 crate-type = ["cdylib"]
-name="flex_custom_policy_example_3"
+name="flex_custom_policy_auth_header"
 path="src/lib.rs"
 
 [dependencies]
