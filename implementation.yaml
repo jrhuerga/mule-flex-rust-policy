@@ -2,4 +2,4 @@
 minRuntimeVersion: 1.0.0
 technology: flexGateway
 name: Custom Auth Header
-releaseNotes: "<some notes here>"
+releaseNotes: Initial version
