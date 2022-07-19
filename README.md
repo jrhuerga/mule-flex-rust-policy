@@ -1,5 +1,5 @@
 # MuleSoft Anypoint Flex Gateway policy (custom header check)
-This is a Rust policy for MuleSoft Anypoint Flex. The policy essentially checks if the request contains a header x-custom-auth and if its value is the same configured in the policy. If that is the case, it allows the execution of the backend; otherwise, it returns a 401.
+This is a Rust policy for MuleSoft Anypoint Flex. The policy essentially checks if the request contains a header _x-custom-auth_ and if its value is the same configured in the policy. If that is the case, it allows the execution of the backend; otherwise, it returns a 401.
 
 For more informaton check: [Implementing a Flex Gateway Custom Policy in Rust](https://docs.mulesoft.com/gateway/policies-custom-flex-implement-rust)
 
@@ -42,7 +42,7 @@ Following steps describe how to download the code from GitHub and compile it.
 
     `cargo build --target wasm32-unknown-unknown --release`
 
-4. This will generate a file named flex_custom_policy_auth_header.wasm in the folder target/wasm32-unknown-unknown/release . You can optionally use wasm-gc to reduce its size. If necessary, you can use an AWS S3 bucket to copy that file so it will be available on your laptop to upload it to MuleSoft Exchange using a browser.
+4. This will generate a file named _flex_custom_policy_auth_header.wasm_ in the folder _target/wasm32-unknown-unknown/release_ . You can optionally use wasm-gc to reduce its size. If necessary, you can use an AWS S3 bucket to copy that file so it will be available on your laptop to upload it to MuleSoft Exchange using a browser.
 
 
 
@@ -86,16 +86,16 @@ There are three ways of registering a new Flex Gateway: using Linux binary, usin
 ## Publishing the policy in Exchange
 Following steps describe how to publish the policy in MuleSoft Exchange.
 
-1. Open MuleSof Exchange and click on Publish new asset
-1. Enter the name Custom Auth Header
-1. Select Policy as Asset Type
-1. Upload the file schema.json
-1. Upload the file definition.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
-1. Click on Publish. This will take a while. When it finishes, click on Implementations and Add Implementation
-1. Enter the name Custom Auth Header Impl
-1. Upload the file flex_custom_policy_auth_header.wasm
-1. Upload the file implementation.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
-1. Click on Add Implementation
+1. Open MuleSof Exchange and click on _Publish new asset_
+1. Enter the name _Custom Auth Header_
+1. Select _Policy_ as _Asset Type_
+1. Upload the file _schema.json_
+1. Upload the file _definition.yaml_. To avoid errors, make sure you keep its EOL characters in Unix format.
+1. Click on _Publish_. This will take a while. When it finishes, click on Implementations and _Add Implementation_
+1. Enter the name _Custom Auth Header Impl_
+1. Upload the file _flex_custom_policy_auth_header.wasm_
+1. Upload the file _implementation.yaml_. To avoid errors, make sure you keep its EOL characters in Unix format.
+1. Click on _Add Implementation_
     
 
 ## Testing the policy
@@ -105,6 +105,6 @@ Once that the policy is published in Exchange, it will be ready to be applied to
 1. Define in API Manager a new API in the previously created API Gateway
 1. Apply in that API instance the policy - defining any text as value - and wait some minutes until it is applied
 1. Make a call to the API using postman. It should produce a 401 error
-1. Repeat the call, but passing a new header named x-custom-auth with the value you have defined in the policy. The API should produce an HTTP 200 status.
+1. Repeat the call, but passing a new header named _x-custom-auth_ with the value you have defined in the policy. The API should produce an HTTP 200 status.
 
 
