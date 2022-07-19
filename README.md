@@ -66,15 +66,19 @@ There are three ways of registering a new Flex Gateway: using Linux binary, usin
     
     `--organization=a02dd3bb-28ff-4339-bafa-06f7f0332cc0 \`
     
-    `--connected=true``
+    `--connected=true`
 
 3. Run the following command to start the Flex Gateway replacing <absolute-path-to-directory-with-conf-file> with the path and the UUID in the name of the .conf file with the one created in the previous step.
 
-    `$ docker run --rm \
--v <absolute-path-to-directory-with-conf-file>/:/etc/flex-gateway/rtm \
--p 8081:8081 \
--e FLEX_RTM_ARM_AGENT_CONFIG=/etc/flex-gateway/rtm/<UUID-of-your-file>.conf \
-mulesoft/flex-gateway:1.0.1`
+    `$ docker run --rm \`
+
+    `-v <absolute-path-to-directory-with-conf-file>/:/etc/flex-gateway/rtm \`
+
+    `-p 8081:8081 \`
+
+    `-e FLEX_RTM_ARM_AGENT_CONFIG=/etc/flex-gateway/rtm/<UUID-of-your-file>.conf \`
+
+    `mulesoft/flex-gateway:1.0.1``
 
 
 
