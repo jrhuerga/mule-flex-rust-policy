@@ -78,7 +78,7 @@ There are three ways of registering a new Flex Gateway: using Linux binary, usin
 
     `-e FLEX_RTM_ARM_AGENT_CONFIG=/etc/flex-gateway/rtm/<UUID-of-your-file>.conf \`
 
-    `mulesoft/flex-gateway:1.0.1``
+    `mulesoft/flex-gateway:1.0.1`
 
 
 
