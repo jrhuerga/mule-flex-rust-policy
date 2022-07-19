@@ -56,17 +56,17 @@ There are three ways of registering a new Flex Gateway: using Linux binary, usin
 
 2. Register Flex Gateway to Anypoint Platform by running the following command replacing <gateway-name> by your own value.
 
-    `$ docker run --entrypoint flexctl -w /registration \
+    `$ docker run --entrypoint flexctl -w /registration \`
     
--v "$(pwd)":/registration mulesoft/flex-gateway:1.0.1 \
+    `-v "$(pwd)":/registration mulesoft/flex-gateway:1.0.1 \`
     
-register <gateway-name> \
+    `register <gateway-name> \`
     
---token=40e145a8-b49e-445a-af75-2303adcb9069 \
+    `--token=40e145a8-b49e-445a-af75-2303adcb9069 \`
     
---organization=a02dd3bb-28ff-4339-bafa-06f7f0332cc0 \
+    `--organization=a02dd3bb-28ff-4339-bafa-06f7f0332cc0 \`
     
---connected=true`
+    `--connected=true``
 
 3. Run the following command to start the Flex Gateway replacing <absolute-path-to-directory-with-conf-file> with the path and the UUID in the name of the .conf file with the one created in the previous step.
 
