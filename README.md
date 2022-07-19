@@ -42,7 +42,7 @@ Following steps describe how to download the code from GitHub and compile it.
 
     `cargo build --target wasm32-unknown-unknown --release`
 
-4. This will generate a file XXX in the folder target/wasm32-unknown-unknown/release . You can optionally use wasm-gc to reduce its size. If necessary, you can use an AWS S3 bucket to copy that file so it will be available on your laptop to upload it to MuleSoft Exchange using a browser.
+4. This will generate a file named flex_custom_policy_auth_header.wasm in the folder target/wasm32-unknown-unknown/release . You can optionally use wasm-gc to reduce its size. If necessary, you can use an AWS S3 bucket to copy that file so it will be available on your laptop to upload it to MuleSoft Exchange using a browser.
 
 
 
