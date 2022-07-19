@@ -98,16 +98,13 @@ Following steps describe how to publish the policy in MuleSoft Exchange.
 1. Click on Add Implementation
     
 
-
-
-
 ## Testing the policy
-Pending
+Once that the policy is published in Exchange, it will be ready to be applied to APIs. Follow these steps:
 
-1. Point
-1. Point
-1. Point
-
-`$ sudo rm`
+1. Publish an API Spec in Exchange
+1. Define in API Manager a new API in the previously created API Gateway
+1. Apply in that API instance the policy - defining any text as value - and wait some minutes until it is applied
+1. Make a call to the API using postman. It should produce a 401 error
+1. Repeat the call, but passing a new header named x-custom-auth with the value you have defined in the policy. The API should produce an HTTP 200 status.
 
 
