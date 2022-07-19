@@ -3,6 +3,8 @@ This is a Rust policy for MuleSoft Anypoint Flex. The policy essentially checks 
 
 For more informaton check: [Implementing a Flex Gateway Custom Policy in Rust](https://docs.mulesoft.com/gateway/policies-custom-flex-implement-rust)
 
+You can find another example of a Rust policy for Anypoint Flex [here](https://github.com/jrhuerga/mule-flex-data-masking).
+
 ## Configuring a Rust development environment
 
 Following steps describe how to configure a development environment on an EC2 linux instance:
