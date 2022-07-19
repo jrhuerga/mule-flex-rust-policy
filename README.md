@@ -9,14 +9,19 @@ Pending
 2. Download and install Rust
 
 `$ curl https://sh.rustup.rs -sSf | sh`
+
 3. Install build essentials
 
 `$ sudo apt-get update`
 
 `$ sudo apt install build-essential`
+
 4. Configure Rust
+
 `$ sudo snap install rustup --classic`
+
 `$ rustup install stable`
+
 `$ rustup default stable`
 
 ## Compiling the code
