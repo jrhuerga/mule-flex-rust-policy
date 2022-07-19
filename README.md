@@ -1,4 +1,4 @@
-# MuleSoft Anypoint Flex Gateway policy
+# MuleSoft Anypoint Flex Gateway policy (custom header check)
 This is a Rust policy for MuleSoft Anypoint Flex. The policy essentially checks if the request contains a header x-custom-auth and if its value is the same configured in the policy. If that is the case, it allows the execution of the backend; otherwise, it returns a 401.
 
 For more informaton check: [Implementing a Flex Gateway Custom Policy in Rust](https://docs.mulesoft.com/gateway/policies-custom-flex-implement-rust)
