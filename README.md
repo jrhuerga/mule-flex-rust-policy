@@ -84,13 +84,21 @@ There are three ways of registering a new Flex Gateway: using Linux binary, usin
 
 
 ## Publishing the policy in Exchange
-Pending
+Following steps describe how to publish the policy in MuleSoft Exchange.
 
-1. Point
-1. Point
-1. Point
+1. Open MuleSof Exchange and click on Publish new asset
+1. Enter the name Custom Auth Header
+1. Select Policy as Asset Type
+1. Upload the file schema.json
+1. Upload the file definition.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
+1. Click on Publish. This will take a while. When it finishes, click on Implementations and Add Implementation
+1. Enter the name Custom Auth Header Impl
+1. Upload the file flex_custom_policy_auth_header.wasm
+1. Upload the file implementation.yaml
+1. Click on Add Implementation
+    
 
-`$ sudo rm`
+
 
 
 ## Testing the policy
