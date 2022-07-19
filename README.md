@@ -94,7 +94,7 @@ Following steps describe how to publish the policy in MuleSoft Exchange.
 1. Click on Publish. This will take a while. When it finishes, click on Implementations and Add Implementation
 1. Enter the name Custom Auth Header Impl
 1. Upload the file flex_custom_policy_auth_header.wasm
-1. Upload the file implementation.yaml
+1. Upload the file implementation.yaml. To avoid errors, make sure you keep its EOL characters in Unix format.
 1. Click on Add Implementation
     
 
