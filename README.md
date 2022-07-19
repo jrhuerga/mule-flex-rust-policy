@@ -3,7 +3,7 @@ This is a Rust policy for MuleSoft Anypoint Flex. The policy essentially checks 
 
 ## Configuring a Rust development environment
 
-Pending
+Following steps describe how to configure a development environment on an EC2 linux instance:
 
 1. Create an EC2 instance with Ubuntu, of type t2.medium
 2. Download and install Rust
